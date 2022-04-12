@@ -1,2 +1,2 @@
 # didakta-expressjs
-The backend of the Didakta Project w/ NodeJs, ExpressJS
+The backend of Didakta Project w/ NodeJs, ExpressJS
