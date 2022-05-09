@@ -17,5 +17,6 @@ userAuth.post("/register", verifyNotLoggedIn, registerUser);
 userAuth.post("/login", verifyNotLoggedIn, loginUser);
 userAuth.put("/profile/:id", updateUser); //verifyUser() should be added
 userAuth.put("/progress/:id", updateUserProgress); //verifyUser() should be added
+// userAuth.put("/quiz-progress/:id, updateQuizProgress");
 
 module.exports = userAuth;
