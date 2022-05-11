@@ -1,21 +1,24 @@
 const User = require("../models/User");
 
-const updateUserProgress = async (req, res) => {
+const updateQuizProgress = async (req, res) => {
   try {
     const { id } = req.params;
     let user = await User.findById(id);
-    const { lessonProgress, chapterProgress } = req.body;
 
+    const quizProgress = user.quizProgress;
+
+    const { quizResult } = req.body;
+
+    quizResult && quizProgress.push(quizResult);
     user = await User.findByIdAndUpdate(
       id,
       {
-        lessonProgress: lessonProgress,
-        chapterProgress: chapterProgress,
+        quizProgress: quizProgress,
       },
       { new: true }
     );
     res.json({
-      msg: `User Progress with id ${id} updated`,
+      msg: `User's quiz progress with id ${user.id} updated`,
       success: true,
       data: user,
     });
@@ -28,4 +31,4 @@ const updateUserProgress = async (req, res) => {
   }
 };
 
-module.exports = { updateUserProgress };
+module.exports = { updateQuizProgress };
