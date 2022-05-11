@@ -2,6 +2,8 @@ const jwt = require("jsonwebtoken");
 
 const verifyAdmin = () => {};
 
+const verifyAPIKey = () => {};
+
 const verifyUser = (req, res, next) => {
   const token = req.header("authentication-token");
   if (!token) return res.status(401).send("Access denied");
@@ -21,4 +23,4 @@ const verifyNotLoggedIn = (req, res, next) => {
   next();
 };
 
-module.exports = { verifyAdmin, verifyUser, verifyNotLoggedIn };
+module.exports = { verifyAdmin, verifyUser, verifyNotLoggedIn, verifyAPIKey };
