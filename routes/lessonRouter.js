@@ -1,14 +1,19 @@
 const express = require("express");
 const lessonRouter = express.Router();
+
+// functions
 const { getAllLessons, getOneLesson } = require("../controllers/getLessons");
 const { postOneLesson } = require("../controllers/postLesson");
 const { updateOneLesson } = require("../controllers/updateLesson");
-const { verifyAdmin, verifyUser, verifyAPIKey } = require("./userMiddlewares");
+const { verifyAdmin } = require("../controllers/userMiddlewares");
 
+// routers
 lessonRouter
-  .get("/", getAllLessons)
+  .get("/", verifyAdmin, getAllLessons)
   .get("/:id", getOneLesson)
-  .post("/add", postOneLesson)
-  .put("/:id/update", updateOneLesson); // add verifyAdmin to protect the route
+
+  .post("/add", verifyAdmin, postOneLesson)
+
+  .put("/:id/update", verifyAdmin, updateOneLesson);
 
 module.exports = lessonRouter;

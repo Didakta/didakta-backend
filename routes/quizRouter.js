@@ -1,8 +1,16 @@
 const express = require("express");
 const quizRouter = express.Router();
+
+// functions
 const { postOneQuiz } = require("../controllers/postQuiz");
 const { updateOneQuiz } = require("../controllers/updateQuiz");
 
-quizRouter.post("/add", postOneQuiz).put("/:id/update", updateOneQuiz); // add verifyAdmin to protect the route
+// middleware
+const { verifyAdmin } = require("../controllers/userMiddlewares");
+
+quizRouter
+  .post("/add", verifyAdmin, postOneQuiz)
+
+  .put("/:id/update", verifyAdmin, updateOneQuiz);
 
 module.exports = quizRouter;
