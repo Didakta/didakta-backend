@@ -1,14 +1,20 @@
 const express = require("express");
 const chapterRouter = express.Router();
+
+//functions
 const { getAllChapters } = require("../controllers/getChapters");
 const { postOneChapter } = require("../controllers/postChapter");
 const { updateOneChapter } = require("../controllers/updateChapter");
 
-// const { verifyAdmin, verifyUser } = require("./userFunctions");
+// middlewares
+const { verifyAdmin } = require("../controllers/userMiddlewares");
 
+// routes
 chapterRouter
-  .get("/", getAllChapters)
-  .post("/add", postOneChapter)
-  .put("/:id/update", updateOneChapter); // add verifyAdmin to protect the route
+  .get("/", verifyAdmin, getAllChapters)
+
+  .post("/add", verifyAdmin, postOneChapter)
+
+  .put("/:id/update", verifyAdmin, updateOneChapter);
 
 module.exports = chapterRouter;
