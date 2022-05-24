@@ -7,6 +7,10 @@ const updateUser = async (req, res) => {
 
     const { first, last, email, password } = req.body;
 
+    const emailExists = await User.findOne({ email: email });
+    if (emailExists)
+      return res.status(400).send("This email is already registered.");
+
     // check if password matches with RegExp
     // const regex = await new RegExp(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/);
     // let rightPassPattern = await regex.test(password);
