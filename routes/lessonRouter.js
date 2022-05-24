@@ -10,7 +10,7 @@ const { verifyAdmin } = require("../controllers/userMiddlewares");
 // routers
 lessonRouter
   .get("/", verifyAdmin, getAllLessons)
-  .get("/:id", getOneLesson)
+  .get("/:id", verifyAdmin, getOneLesson)
 
   .post("/add", verifyAdmin, postOneLesson)
 
