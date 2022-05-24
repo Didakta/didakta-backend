@@ -19,10 +19,10 @@ const loginUser = async (req, res) => {
     const authenticationToken = jwt.sign(
       {
         id: user._id,
-        first: user.first,
-        last: user.last,
+        // first: user.first,
+        // last: user.last,
         email: user.email,
-        admin: user.admin,
+        // admin: user.admin,
       },
       // "Stack",
       // { expiresIn: req.body.rememberMe ? "365d" : "24h" }, // ********************************* UNCERTAIN SYNTAX !!!
