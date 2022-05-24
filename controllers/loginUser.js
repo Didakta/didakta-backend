@@ -10,7 +10,7 @@ const loginUser = async (req, res) => {
     if (!user)
       return res.status(400).send("Email not found. Please register first.");
 
-    // check if the user provided the right password
+    // check if user provided the right password
     const validPass = await bcrypt.compare(req.body.password, user.password);
     if (!validPass)
       return res.status(400).send("Invalid password. Please try again!");
