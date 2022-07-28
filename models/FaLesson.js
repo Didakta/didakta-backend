@@ -2,9 +2,9 @@ const mongoose = require("mongoose");
 
 const { Schema } = mongoose;
 
-//  English Lesson schema model:
+//  Persion Lesson schema model:
 //  title, number, chapters, wordlist, quiz
-const LessonSchema = new Schema({
+const FaLessonSchema = new Schema({
   title: String,
   number: {
     type: Number,
@@ -30,4 +30,4 @@ const LessonSchema = new Schema({
   },
 });
 
-module.exports = mongoose.model("Lesson", LessonSchema);
+module.exports = mongoose.model("FaLessonSchema", FaLessonSchema);
